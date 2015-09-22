@@ -1,7 +1,7 @@
 inherit font
 
-NAME="font-lohit-nepali-ttf"
-VERSION=2.93.0
+NAME="lohit-nepali-fonts"
+VERSION=2.94.0
 RELEASE=1
 CATEGORY="X11"
 SUMMARY="Lohit Nepali font"
@@ -11,6 +11,10 @@ HOMEPAGE="https://fedorahosted.org/lohit/"
 SRC_URI="https://fedorahosted.org/releases/l/o/lohit/lohit-nepali-${VERSION}.tar.gz"
 SRC_DIR="lohit-nepali-${VERSION}"
 
+ARCH=noarch
+
+OBSOLETES="font-lohit-nepali-ttf"
+
 src_compile() {
 	lndirs
 	cd ${B}
@@ -19,7 +23,7 @@ src_compile() {
 
 src_install() {
 	cd ${B}
-	fontinto TTF
+	fontinto ${NAME%-fonts}
 	dofont *.ttf
 
 	dofontconf *.conf
